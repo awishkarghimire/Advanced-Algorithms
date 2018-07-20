@@ -88,38 +88,29 @@ int breadthFirst(vector<list<int>> graph, int capacity[][100], int n)
 			{
 				q1.push(*It);
 				parent[*It] = vertex;
-				//cout << *It + 1 << ":" << vertex + 1 << "\n";
 				isVisited[*It] = true;
 			}
-		}	
-		//cout << 1 << ":" << parent[0] << "\n";
+		}
 		if(breakVar)
 			break;
 	}
 	if(breakVar == false)
 		return 0;
-	//cout << "lol";
 	vector<int> path;
 	int j = n - 1;
 	while(parent[j] != -1)
 	{
-		//cout << j << " ";
 		path.push_back(j);
 		j = parent[j];
 	}
 	path.push_back(j);
 	reverse(path.begin(), path.end());
-	/*cout << "path: ";
-	for(int i = 0; i < path.size(); i++)
-		cout << path[i] + 1 << " ";
-	cout << endl;*/
 	int min = 1000000;
 	for(int i = 0; i < path.size() - 1; i++)
 	{
 		if(min > capacity[path[i]][path[i + 1]])
 			min = capacity[path[i]][path[i + 1]];
 	}
-	//cout << "min: " << min << "\n";
 	for(int i = 0; i < path.size() - 1; i++)
 	{
 		capacity[path[i]][path[i + 1]] -= min;
@@ -135,14 +126,8 @@ int edmond_karp(vector<list<int>> graph, int capacity[][100], int n)
 	int i = 0;
 	while(min != 0)
 	{
-		//displayGraph(graph, capacity , n);
 		min = breadthFirst(graph, capacity, n);
 		flow += min ;
-		//cout << "\n\n";
-		//i++;
-		//if( i == 3)
-		//	break;
-		//cout << "lol";
 	}
 	return flow;
 }
