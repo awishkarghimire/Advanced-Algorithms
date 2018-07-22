@@ -1,2 +1,2 @@
 # Advanced-Algorithms
-Here I implement some fairy complicated algorithms.
+Here I implement some fairly complicated algorithms.
